@@ -20,10 +20,9 @@
 <script>
 document.body.contentEditable = 'true';  document.designMode='on'; void 0
 </script>
-p.a {
-  font: 15px Arial, sans-serif;
-}
-
-p.b {
-  font: italic small-caps bold 12px/30px Georgia, serif;
+html * {
+  font-size: 16px;
+  line-height: 1.625;
+  color: #2020131;
+  font-family: Nunito, sans-serif;
 }
