@@ -20,3 +20,10 @@
 <script>
 document.body.contentEditable = 'true';  document.designMode='on'; void 0
 </script>
+p.a {
+  font: 15px Arial, sans-serif;
+}
+
+p.b {
+  font: italic small-caps bold 12px/30px Georgia, serif;
+}
