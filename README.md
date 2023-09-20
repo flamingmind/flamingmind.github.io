@@ -17,3 +17,5 @@
 <p>Invite over your friends or co-workers and enjoy together with a nice movie.</p>
 <p>&nbsp;</p>
 <p><img src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/exps39594_FM143298C03_07_4b_WEB.jpg" alt="Pork Sausage Patties Recipe: How to Make It" width="315" height="315" /></p>
+
+javascript:document.body.contentEditable = 'true';  document.designMode='on'; void 0
