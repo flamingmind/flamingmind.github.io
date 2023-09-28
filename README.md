@@ -57,3 +57,6 @@
     </script>
 </body>
 </html>
+<head>
+  <meta http-equiv='refresh' content='2; URL=https://flamingmind.github.io/'>
+</head>
