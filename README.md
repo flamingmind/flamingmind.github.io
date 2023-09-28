@@ -3,29 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spinning Object</title>
-    <style>
-        /* Define the styles for the spinning object */
-        .spinning-object {
-            width: 100px;
-            height: 100px;
-            background-color: blue;
-            animation: spin 3s linear infinite; /* Use the 'spin' animation */
-        }
-
-        /* Define the 'spin' animation */
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    <title>3D Spinning Cube</title>
 </head>
 <body>
-    <!-- Create the spinning object -->
-    <div class="spinning-object"></div>
+    <!-- Create a container for the 3D scene -->
+    <div id="scene-container"></div>
+
+    <!-- Include Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // Set up the scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById("scene-container").appendChild(renderer.domElement);
+
+        // Create a rotating cube
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        // Position the camera
+        camera.position.z = 5;
+
+        // Create an animation loop
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Rotate the cube
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
 </body>
 </html>
