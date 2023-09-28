@@ -1,3 +1,14 @@
+<script>
+console.log("Executed now");
+
+// 1 second delay
+setTimeout(function(){
+    console.log("Executed after 1 second");
+}, 1000);
+
+// Notice this!
+console.log("Executed before the delay, but after the 1st console.log");
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
