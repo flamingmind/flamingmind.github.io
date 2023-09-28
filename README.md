@@ -3,60 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Spinning Outlined Cube</title>
+    <title>3D Spinning Cube</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            perspective: 800px;
+        }
+
+        .cube .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: transparent;
+            border: 1px solid #fff;
+            opacity: 0.8;
+            transition: transform 2s;
+        }
+
+        .cube .face:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
+        .cube .face:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
+        .cube .face:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
+        .cube .face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
+        .cube .face:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
+        .cube .face:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
+
+        .cube:hover .face {
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <!-- Create a container for the 3D scene -->
-    <div id="scene-container"></div>
-
-    <!-- Include Three.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <script>
-        // Set up the scene, camera, and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById("scene-container").appendChild(renderer.domElement);
-
-        // Create a rotating cube with an outlined material
-        const geometry = new THREE.BoxGeometry();
-        const outlineMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.BackSide });
-        const cube = new THREE.Mesh(geometry, outlineMaterial);
-        scene.add(cube);
-
-        // Create a solid material for the cube's faces
-        const solidMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-        const solidCube = new THREE.Mesh(geometry, solidMaterial);
-        scene.add(solidCube);
-
-        // Add lighting
-        const light = new THREE.PointLight(0xffffff);
-        light.position.set(5, 5, 5);
-        scene.add(light);
-
-        // Position the camera
-        camera.position.z = 5;
-
-        // Create an animation loop
-        const animate = () => {
-            requestAnimationFrame(animate);
-
-            // Rotate the cube
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            solidCube.rotation.x += 0.01;
-            solidCube.rotation.y += 0.01;
-
-            renderer.render(scene, camera);
-        };
-
-        animate();
-    </script>
+    <div class="container">
+        <div class="cube">
+            <div class="face">Front</div>
+            <div class="face">Right</div>
+            <div class="face">Back</div>
+            <div class="face">Left</div>
+            <div class="face">Top</div>
+            <div class="face">Bottom</div>
+        </div>
+    </div>
 </body>
 </html>
 <head>
-  <meta http-equiv='refresh' content='2; URL=https://flamingmind.github.io/'>
+  <meta http-equiv='refresh' content='2; URL=https://flamingmind.github.io/data'>
 </head>
