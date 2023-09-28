@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Spinning Cube</title>
+    <title>3D Spinning Outlined Cube</title>
 </head>
 <body>
     <!-- Create a container for the 3D scene -->
@@ -21,11 +21,21 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById("scene-container").appendChild(renderer.domElement);
 
-        // Create a rotating cube
+        // Create a rotating cube with an outlined material
         const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
+        const outlineMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.BackSide });
+        const cube = new THREE.Mesh(geometry, outlineMaterial);
         scene.add(cube);
+
+        // Create a solid material for the cube's faces
+        const solidMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+        const solidCube = new THREE.Mesh(geometry, solidMaterial);
+        scene.add(solidCube);
+
+        // Add lighting
+        const light = new THREE.PointLight(0xffffff);
+        light.position.set(5, 5, 5);
+        scene.add(light);
 
         // Position the camera
         camera.position.z = 5;
@@ -37,6 +47,8 @@
             // Rotate the cube
             cube.rotation.x += 0.01;
             cube.rotation.y += 0.01;
+            solidCube.rotation.x += 0.01;
+            solidCube.rotation.y += 0.01;
 
             renderer.render(scene, camera);
         };
