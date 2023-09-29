@@ -30,7 +30,7 @@
 </body>
 </html>
 <head>
-  <meta http-equiv='refresh' content='2; URL=https://flamingmind.github.io/data'>
+  <meta http-equiv='refresh' content='2; URL=https://flamingmind.github.io/home'>
 </head>
 <!DOCTYPE html>
 <html>
