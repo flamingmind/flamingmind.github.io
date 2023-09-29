@@ -32,3 +32,28 @@
 <head>
   <meta http-equiv='refresh' content='2; URL=https://flamingmind.github.io/data'>
 </head>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+  
+    <title>
+        GeeksforGeeks
+    </title>
+  
+    <!-- add icon link -->
+    <link rel="icon" href=
+"https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png" 
+          type="image/x-icon">
+</head>
+  
+<body>
+    <h1 style="color:green;">
+        GeeksforGeeks
+    </h1>
+  
+    <p>
+        Welcome to my website
+    </p>
+</body>
+</html>
