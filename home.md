@@ -26,5 +26,5 @@ html * {
   color: #2020131;
   font-family: Nunito, sans-serif;
 }
-
+<p>&nbsp;</p>
 <a href='https://flamingmind.github.io/loading'><button>Click here to go back to Google</button></a>
