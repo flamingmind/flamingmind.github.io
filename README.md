@@ -1,29 +1,24 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Loading Screen</title>
+    <title>Centered 3D Loading Screen</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
             background-color: #333;
-        }
-
-        .loading-container {
-            width: 100vw;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 800px;
+            height: 100vh;
         }
 
         .loading-cube {
             width: 100px;
             height: 100px;
-            transform-style: preserve-3d;
-            animation: spin 2s linear infinite;
+            perspective: 800px;
         }
 
         .loading-face {
@@ -49,19 +44,16 @@
     </style>
 </head>
 <body>
-    <div class="loading-container">
-        <div class="loading-cube">
-            <div class="loading-face"></div>
-            <div class="loading-face"></div>
-            <div class="loading-face"></div>
-            <div class="loading-face"></div>
-            <div class="loading-face"></div>
-            <div class="loading-face"></div>
-        </div>
+    <div class="loading-cube">
+        <div class="loading-face"></div>
+        <div class="loading-face"></div>
+        <div class="loading-face"></div>
+        <div class="loading-face"></div>
+        <div class="loading-face"></div>
+        <div class="loading-face"></div>
     </div>
 </body>
 </html>
-<head>
   <meta http-equiv='refresh' content='2; URL=https://flamingmind.github.io/home'>
 </head>
 <!DOCTYPE html>
