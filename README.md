@@ -67,17 +67,7 @@
   
     <!-- add icon link -->
     <link rel="icon" href=
-"https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png" 
+"https://cdn-icons-png.flaticon.com/512/720/720255.png" 
           type="image/x-icon">
 </head>
-  
-<body>
-    <h1 style="color:green;">
-        GeeksforGeeks
-    </h1>
-  
-    <p>
-        Welcome to my website
-    </p>
-</body>
 </html>
