@@ -56,3 +56,18 @@ btn.onclick = function() {
  changeFavicon('http://www.google.com/favicon.ico');
 };
 </script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+  
+    <title>
+        GeeksforGeeks
+    </title>
+  
+    <!-- add icon link -->
+    <link rel="icon" href=
+"https://cdn-icons-png.flaticon.com/512/720/720255.png" 
+          type="image/x-icon">
+</head>
+</html>
