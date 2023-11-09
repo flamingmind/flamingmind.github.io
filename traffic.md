@@ -16,6 +16,7 @@
 </head>
 <body>
   <script src="https://threejs.org/build/three.js"></script>
+  <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
   <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
 
   <script>
@@ -36,15 +37,19 @@
 
     // Add background
     const textureLoader = new THREE.TextureLoader();
-    const backgroundTexture = textureLoader.load('path/to/night_image.jpg');
+    const backgroundTexture = textureLoader.load('https://images.unsplash.com/photo-1544505861-7142c2ce16e1?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1iaWVudHxlbnwwfHwwfHx8MA%3D%3D');
     scene.background = backgroundTexture;
 
-    // Add city traffic models, textures, etc.
-    // For simplicity, let's just add a basic cube for now
-    const cubeGeometry = new THREE.BoxGeometry();
-    const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-    scene.add(cube);
+    // Load city traffic models
+    const loader = new THREE.GLTFLoader();
+    
+    loader.load('https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/ToyCar/glTF/ToyCar.gltf', function (carModel) {
+      scene.add(carModel.scene);
+    });
+
+    loader.load('https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/Box/glTF/Box.gltf', function (buildingModel) {
+      scene.add(buildingModel.scene);
+    });
 
     // Lights
     const ambientLight = new THREE.AmbientLight(0x404040);
