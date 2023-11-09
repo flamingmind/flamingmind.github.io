@@ -9,10 +9,10 @@
 
     <a-scene>
         <!-- House model -->
-        <a-entity id="house" position="0 0 0" scale="0.1 0.1 0.1" gltf-model="https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/Sponza/glTF/Sponza.gltf"></a-entity>
+        <a-entity id="house" position="0 0 0" scale="0.1 0.1 0.1" gltf-model="https://github.com/flamingmind/flamingmind.github.io/blob/main/studio.gltf"></a-entity>
 
         <!-- 3D model of a dog (replace with your own model) -->
-        <a-entity id="dog" position="0 1.6 -3" scale="0.05 0.05 0.05" rotation="0 180 0" gltf-model="https://cdn.rawgit.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"></a-entity>
+        <a-entity id="dog" position="0 1.6 -3" scale="0.05 0.05 0.05" rotation="0 180 0" gltf-model="https://github.com/flamingmind/flamingmind.github.io/blob/main/dog.gltf"></a-entity>
 
         <!-- Night background -->
         <a-sky material="color: #000; src: https://example.com/night-image.jpg"></a-sky>
