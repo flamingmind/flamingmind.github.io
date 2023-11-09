@@ -25,7 +25,7 @@
     
     // Set up camera
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 5, 10);
+    camera.position.set(0, 50, 100);
 
     // Set up renderer
     const renderer = new THREE.WebGLRenderer();
@@ -35,21 +35,32 @@
     // Add orbit controls for navigation
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-    // Add background
-    const textureLoader = new THREE.TextureLoader();
-    const backgroundTexture = textureLoader.load('https://images.unsplash.com/photo-1544505861-7142c2ce16e1?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1iaWVudHxlbnwwfHwwfHx8MA%3D%3D');
-    scene.background = backgroundTexture;
+    // Add skybox
+    const skyboxTexture = new THREE.TextureLoader().load('https://images.unsplash.com/photo-1544505861-7142c2ce16e1?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1iaWVudHxlbnwwfHwwfHx8MA%3D%3D');
+    scene.background = skyboxTexture;
 
-    // Load city traffic models
+    // Load city models
     const loader = new THREE.GLTFLoader();
     
-    loader.load('https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/ToyCar/glTF/ToyCar.gltf', function (carModel) {
-      scene.add(carModel.scene);
+    loader.load('https://flamingmind.github.io/car.gltf', function (carModel) {
+      const car = carModel.scene;
+      car.scale.set(0.1, 0.1, 0.1); // adjust the scale
+      car.position.set(0, 0, 0); // set initial position
+      scene.add(car);
     });
 
-    loader.load('https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/Box/glTF/Box.gltf', function (buildingModel) {
-      scene.add(buildingModel.scene);
+    loader.load('https://flamingmind.github.io/tower.gltf', function (towerModel) {
+      const tower = towerModel.scene;
+      tower.scale.set(1, 1, 1); // adjust the scale
+      tower.position.set(10, 0, 10); // set initial position
+      scene.add(tower);
     });
+
+    // Create ground (a simple cube for now)
+    const groundGeometry = new THREE.BoxGeometry(200, 1, 200);
+    const groundMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+    scene.add(ground);
 
     // Lights
     const ambientLight = new THREE.AmbientLight(0x404040);
