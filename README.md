@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spinning Brain with Fire Effect</title>
-  <style>
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .spinning-brain {
-      width: 200px;
-      height: 200px;
-      background-color: #f0f0f0;
-      border-radius: 50%;
-      animation: spin 4s linear infinite;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinning Brain with Fire Effects</title>
+    <!-- Include Three.js library -->
+    <script type="module" src="path/to/three.module.js"></script>
 </head>
 <body>
-  <div class="spinning-brain" id="spinningBrain"></div>
+    <script>
+        // Wait for the DOM to be ready
+        document.addEventListener('DOMContentLoaded', init);
 
-  <!-- Include particles.js library -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        function init() {
+            // Set up the scene
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
 
-  <script>
-    // Configure particles.js for the fire effect
-    particlesJS('spinningBrain', {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: '#ff0000' },
-        shape: { type: 'circle', stroke: { width: 0, color: '#000000' }, polygon: { nb_sides: 5 }, image: { src: 'path/to/your/image.png', width: 100, height: 100 } },
-        opacity: { value: 0.7, random: true, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
-        size: { value: 5, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
-        line_linked: { enable: false, distance: 150, color: '#ff0000', opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } },
-      },
-      interactivity: { detect_on: 'canvas', events: { onhover: { enable: false, mode: 'repulse' }, onclick: { enable: false, mode: 'push' }, resize: true }, modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } } },
-      retina_detect: true,
-    });
-  </script>
+            // Load the brain model
+            const loader = new THREE.GLTFLoader();
+            loader.load('path/to/brain.gltf', (gltf) => {
+                const brain = gltf.scene;
+                scene.add(brain);
+            });
+
+            // Create fire effect material (replace 'path/to/fire.jpg' with your fire texture)
+            const fireTexture = new THREE.TextureLoader().load('path/to/fire.jpg');
+            const fireMaterial = new THREE.MeshBasicMaterial({ map: fireTexture, transparent: true, opacity: 0.7 });
+
+            // Create a plane with fire material to simulate fire effects
+            const firePlane = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), fireMaterial);
+            scene.add(firePlane);
+
+            // Position the camera
+            camera.position.z = 5;
+
+            // Animation loop
+            const animate = function () {
+                requestAnimationFrame(animate);
+
+                // Rotate the brain
+                if (brain) {
+                    brain.rotation.x += 0.01;
+                    brain.rotation.y += 0.01;
+                }
+
+                // Rotate and move the fire plane
+                firePlane.rotation.z += 0.005;
+                firePlane.position.z = -2;
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+        }
+    </script>
 </body>
 </html>
