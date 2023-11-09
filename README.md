@@ -3,60 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spinning Brain with Fire Effects</title>
-    <!-- Include Three.js library -->
-    <script type="module" src="path/to/three.module.js"></script>
+    <title>3D Brain with Fire Effects</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
 </head>
 <body>
-    <script>
-        // Wait for the DOM to be ready
-        document.addEventListener('DOMContentLoaded', init);
+    <script type="module">
+        import * as THREE from 'https://threejs.org/build/three.module.js';
+        import { GLTFLoader } from 'https://threejs.org/examples/jsm/loaders/GLTFLoader.js';
+        import { Fire } from 'https://threejs.org/examples/jsm/libs/Fire.js';
 
-        function init() {
-            // Set up the scene
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
+        // Initialize scene
+        const scene = new THREE.Scene();
 
-            // Load the brain model
-            const loader = new THREE.GLTFLoader();
-            loader.load('path/to/brain.gltf', (gltf) => {
-                const brain = gltf.scene;
-                scene.add(brain);
-            });
+        // Create camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
 
-            // Create fire effect material (replace 'path/to/fire.jpg' with your fire texture)
-            const fireTexture = new THREE.TextureLoader().load('path/to/fire.jpg');
-            const fireMaterial = new THREE.MeshBasicMaterial({ map: fireTexture, transparent: true, opacity: 0.7 });
+        // Create renderer
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-            // Create a plane with fire material to simulate fire effects
-            const firePlane = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), fireMaterial);
-            scene.add(firePlane);
+        // Load brain model
+        const loader = new GLTFLoader();
+        const brainUrl = 'HTTPS://BRAINURL___'; // Replace with the actual URL
+        loader.load(brainUrl, (gltf) => {
+            const brain = gltf.scene;
+            scene.add(brain);
 
-            // Position the camera
-            camera.position.z = 5;
-
-            // Animation loop
-            const animate = function () {
-                requestAnimationFrame(animate);
-
-                // Rotate the brain
-                if (brain) {
-                    brain.rotation.x += 0.01;
-                    brain.rotation.y += 0.01;
-                }
-
-                // Rotate and move the fire plane
-                firePlane.rotation.z += 0.005;
-                firePlane.position.z = -2;
-
-                renderer.render(scene, camera);
+            // Add fire effect to the brain
+            const fireOptions = {
+                textureWidth: 512,
+                textureHeight: 512,
+                debug: false,
             };
+            const fireEffect = new Fire(brain, camera, fireOptions);
+            scene.add(fireEffect.mesh);
+        });
 
-            animate();
-        }
+        // Animation
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Rotate the brain
+            if (scene.children.length > 0) {
+                const brain = scene.children[1];
+                brain.rotation.x += 0.005;
+                brain.rotation.y += 0.005;
+            }
+
+            // Update fire effect
+            if (scene.children.length > 1) {
+                const fireEffect = scene.children[2];
+                fireEffect.update();
+            }
+
+            // Render the scene
+            renderer.render(scene, camera);
+        };
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Start animation
+        animate();
     </script>
 </body>
 </html>
