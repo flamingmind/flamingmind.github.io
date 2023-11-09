@@ -1,73 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered 3D Loading Screen</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinning Brain with Fire Effect</title>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-        .loading-cube {
-            width: 100px;
-            height: 100px;
-            perspective: 800px;
-        }
-
-        .loading-face {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: #3498db;
-            opacity: 0.8;
-            border: 2px solid #fff;
-        }
-
-        .loading-face:nth-child(1) { transform: rotateY(0deg) translateZ(50px); }
-        .loading-face:nth-child(2) { transform: rotateY(90deg) translateZ(50px); }
-        .loading-face:nth-child(3) { transform: rotateY(180deg) translateZ(50px); }
-        .loading-face:nth-child(4) { transform: rotateY(-90deg) translateZ(50px); }
-        .loading-face:nth-child(5) { transform: rotateX(90deg) translateZ(50px); }
-        .loading-face:nth-child(6) { transform: rotateX(-90deg) translateZ(50px); }
-
-        @keyframes spin {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-    </style>
+    .spinning-brain {
+      width: 200px;
+      height: 200px;
+      background-color: #f0f0f0;
+      border-radius: 50%;
+      animation: spin 4s linear infinite;
+    }
+  </style>
 </head>
 <body>
-    <div class="loading-cube">
-        <div class="loading-face"></div>
-        <div class="loading-face"></div>
-        <div class="loading-face"></div>
-        <div class="loading-face"></div>
-        <div class="loading-face"></div>
-        <div class="loading-face"></div>
-    </div>
+  <div class="spinning-brain" id="spinningBrain"></div>
+
+  <!-- Include particles.js library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <script>
+    // Configure particles.js for the fire effect
+    particlesJS('spinningBrain', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#ff0000' },
+        shape: { type: 'circle', stroke: { width: 0, color: '#000000' }, polygon: { nb_sides: 5 }, image: { src: 'path/to/your/image.png', width: 100, height: 100 } },
+        opacity: { value: 0.7, random: true, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
+        size: { value: 5, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
+        line_linked: { enable: false, distance: 150, color: '#ff0000', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } },
+      },
+      interactivity: { detect_on: 'canvas', events: { onhover: { enable: false, mode: 'repulse' }, onclick: { enable: false, mode: 'push' }, resize: true }, modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } } },
+      retina_detect: true,
+    });
+  </script>
 </body>
-</html>
-  <meta http-equiv='refresh' content='2; URL=https://flamingmind.github.io/home'>
-</head>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-  
-    <title>
-        GeeksforGeeks
-    </title>
-  
-    <!-- add icon link -->
-    <link rel="icon" href=
-"https://cdn-icons-png.flaticon.com/512/720/720255.png" 
-          type="image/x-icon">
-</head>
 </html>
