@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,9 +62,9 @@
         <div class="container">
             <h1>FlamingMind Blog</h1>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <p><span style="color: #ff0000;">Contacts</span></p>
+                <a href="flamingmind.github.io">Home</a>
+                <a href="flamingmind.github.io/ABOUT">About</a>
+                <a href="flamingmind.github.io/CONTACTS"><p><span style="color: #ff0000;">Contact</span></p></a>
             </nav>
         </div>
     </header>
