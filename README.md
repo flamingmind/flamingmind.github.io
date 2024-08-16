@@ -1,44 +1,97 @@
-pip install pillow numpy
-from PIL import Image, ImageDraw, ImageFont
-import numpy as np
-import math
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlamingMind Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .content {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .post {
+            margin-bottom: 20px;
+        }
+        .post h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>FlamingMind Blog</h1>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-# Image dimensions
-width, height = 800, 600
+    <div class="container">
+        <div class="content">
+            <div class="post">
+                <h2>Welcome to FlamingMind!</h2>
+                <p>Welcome to FlamingMind, a vibrant community dedicated to social networking and learning. Our mission is to bring together like-minded individuals who are passionate about sharing knowledge, exploring new ideas, and connecting with others.</p>
+                <p>Whether you are here to find a mentor, participate in engaging discussions, or simply learn something new, FlamingMind is the place for you. Join us and be part of a community that values learning and growth.</p>
+            </div>
 
-# Create a new image with white background
-image = Image.new('RGB', (width, height), 'white')
-draw = ImageDraw.Draw(image)
+            <div class="post">
+                <h2>Upcoming Events</h2>
+                <p>Stay tuned for our upcoming events where you can network with industry experts, participate in workshops, and attend seminars on various topics. Keep an eye on our blog for updates!</p>
+            </div>
 
-# Draw a simple brain shape (ellipse for simplicity)
-brain_bbox = [200, 150, 600, 450]
-draw.ellipse(brain_bbox, fill='lightgray', outline='black')
+            <div class="post">
+                <h2>How to Get Started</h2>
+                <p>Getting started with FlamingMind is easy! Simply sign up, create your profile, and start exploring the community. Engage in discussions, join groups that interest you, and begin your journey of learning and networking.</p>
+            </div>
+        </div>
+    </div>
 
-# Function to add flames
-def draw_flame(draw, center, size, color):
-    flame_points = []
-    for i in range(0, 360, 10):
-        angle = math.radians(i)
-        radius = size * (1 + 0.5 * math.sin(3 * angle))  # Flame wave effect
-        x = center[0] + int(radius * math.cos(angle))
-        y = center[1] - int(radius * math.sin(angle))
-        flame_points.append((x, y))
-
-    draw.polygon(flame_points, fill=color, outline='black')
-
-# Draw flames around the brain
-flame_colors = ['red', 'orange', 'yellow']
-flame_positions = [
-    (400, 150),  # Top of the brain
-    (300, 200),  # Left of the brain
-    (500, 200),  # Right of the brain
-]
-
-for i, pos in enumerate(flame_positions):
-    draw_flame(draw, pos, 100, flame_colors[i % len(flame_colors)])
-
-# Save the image
-image.save('flaming_brain.png')
-
-# Display the image
-image.show()
+    <footer>
+        <p>&copy; 2024 FlamingMind. All rights reserved.</p>
+    </footer>
+</body>
+</html>
