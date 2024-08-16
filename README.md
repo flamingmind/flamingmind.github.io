@@ -62,7 +62,7 @@
         <div class="container">
             <h1>FlamingMind Blog</h1>
             <nav>
-                <p><span style="color: #ff0000;">Home</span></p>
+                <a href="#"><p><span style="color: #ff0000;">Home</span></p></a>
                 <a href="#">About</a>
                 <a href="#">Contact</a>
             </nav>
