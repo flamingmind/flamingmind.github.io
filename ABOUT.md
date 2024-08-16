@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -64,7 +63,7 @@
             <h1>FlamingMind Blog</h1>
             <nav>
                 <a href="#">Home</a>
-                <p><span style="color: #ff0000;">About</span></p>
+                <a href="#"><p><span style="color: #ff0000;">About</span></p></a>
                 <a href="#">Contact</a>
             </nav>
         </div>
