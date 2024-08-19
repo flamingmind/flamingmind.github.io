@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlamingMind Blog</title>
+    <title>FlamingMind - Powered by Thinkfire</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,46 +11,32 @@
             background-color: #f4f4f4;
             color: #333;
         }
+        header {
+            background-color: #ff6600;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
         .container {
             width: 80%;
             margin: 0 auto;
-            overflow: hidden;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        nav {
-            margin-top: 10px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-        .content {
-            background: #fff;
             padding: 20px;
-            margin-top: 20px;
+        }
+        h1, h2 {
+            color: #ff6600;
+        }
+        .section {
+            background: #fff;
             border-radius: 8px;
-        }
-        .post {
+            padding: 20px;
             margin-bottom: 20px;
-        }
-        .post h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         footer {
-            background: #333;
+            background-color: #333;
             color: #fff;
-            padding: 10px 0;
             text-align: center;
+            padding: 10px 0;
             position: fixed;
             width: 100%;
             bottom: 0;
@@ -59,38 +45,29 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>FlamingMind Blog</h1>
-            <nav>
-                <a href="#"><p><span style="color: #ff0000;">Home</span></p></a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-            </nav>
-        </div>
+        <h1>FlamingMind</h1>
+        <p>Powered by Thinkfire</p>
     </header>
 
     <div class="container">
-        <div class="content">
-            <div class="post">
-                <h2>Welcome to FlamingMind!</h2>
-                <p>Welcome to FlamingMind, a vibrant community dedicated to social networking and learning. Our mission is to bring together like-minded individuals who are passionate about sharing knowledge, exploring new ideas, and connecting with others.</p>
-                <p>Whether you are here to find a mentor, participate in engaging discussions, or simply learn something new, FlamingMind is the place for you. Join us and be part of a community that values learning and growth.</p>
-            </div>
+        <section class="section">
+            <h2>Welcome to FlamingMind</h2>
+            <p>At FlamingMind, we’re all about pushing the boundaries of programming and tackling unique projects that set us apart. Our team, driven by innovation and creativity, specializes in crafting tailored solutions that turn your ideas into reality.</p>
+        </section>
 
-            <div class="post">
-                <h2>Upcoming Events</h2>
-                <p>Stay tuned for our upcoming events where you can network with industry experts, participate in workshops, and attend seminars on various topics. Keep an eye on our blog for updates!</p>
-            </div>
+        <section class="section">
+            <h2>What We Do</h2>
+            <p>We focus on a variety of programming disciplines, ensuring that each project we take on is handled with expertise and enthusiasm. From developing custom software to executing one-of-a-kind projects, our goal is to deliver exceptional results that exceed expectations.</p>
+        </section>
 
-            <div class="post">
-                <h2>How to Get Started</h2>
-                <p>Getting started with FlamingMind is easy! Simply sign up, create your profile, and start exploring the community. Engage in discussions, join groups that interest you, and begin your journey of learning and networking.</p>
-            </div>
-        </div>
+        <section class="section">
+            <h2>Why Choose Us?</h2>
+            <p>With FlamingMind, you get a partner who is dedicated to innovation and excellence. Our unique approach and deep expertise in programming make us the perfect choice for projects that demand precision and creativity. Join us, and let’s create something extraordinary together!</p>
+        </section>
     </div>
 
     <footer>
-        <p>&copy; 2024 FlamingMind. All rights reserved.</p>
+        <p>&copy; 2024 FlamingMind | Powered by Thinkfire</p>
     </footer>
 </body>
 </html>
